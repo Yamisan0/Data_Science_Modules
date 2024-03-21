@@ -1,0 +1,17 @@
+version: '3.1'  # Use docker compose version 3.1
+
+services:
+  db:
+    image: postgres:latest  # Use the latest official postgres image
+    environment:
+      POSTGRES_DB: piscineds  # Set the name of your database
+      POSTGRES_USER: imessaad # Set the database user
+      POSTGRES_PASSWORD: mysecretpassword  # Set the database user password
+    volumes:
+      - mydbdata:/var/lib/postgresql/data  # Persist database data
+    ports:
+      - "5432:5432"  # Expose PostgreSQL default port
+
+volumes:
+  mydbdata:  # Declare the volume
+

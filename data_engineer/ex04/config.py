@@ -1,0 +1,6 @@
+DATABASE_DB='piscineds'
+DATABASE_USER='imessaad'
+DATABASE_PASSWORD='mysecretpassword'
+DATABASE_PORT=5432
+db_url = f'postgresql://{DATABASE_USER}:{DATABASE_PASSWORD}@localhost:{DATABASE_PORT}/{DATABASE_DB}'
+

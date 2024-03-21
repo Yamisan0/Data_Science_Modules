@@ -1,0 +1,27 @@
+version: '3.1'  # Use docker compose version 3.1
+
+services:
+  db:
+    image: postgres:latest  # Use the latest official postgres image
+    environment:
+      POSTGRES_DB: piscineds  # Set the name of your database
+      POSTGRES_USER: imessaad  # Set the database user
+      POSTGRES_PASSWORD: mysecretpassword  # Set the database user password
+    volumes:
+      - mydbdata:/var/lib/postgresql/data  # Persist database data
+    ports:
+      - "5432:5432"  # Expose PostgreSQL default port
+
+  pgadmin:
+    image: dpage/pgadmin4:latest  # Use the latest official pgAdmin image
+    environment:
+      PGADMIN_DEFAULT_EMAIL: imessaad@admin.com  # Set the default email for pgAdmin login
+      PGADMIN_DEFAULT_PASSWORD: myadminpassword  # Set the default password for pgAdmin login
+    ports:
+      - "80:80"  # Map port 80 on the host to port 80 in the container
+    depends_on:
+      - db  # Ensure that PostgreSQL starts before pgAdmin
+
+volumes:
+  mydbdata:  # Declare the volume for PostgreSQL
+
